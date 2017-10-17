@@ -6,7 +6,6 @@ var Tokenizer = require('./lib/tokenizer');
 var expand = require('./lib/expand');
 var M4Error = require('./lib/m4-error');
 var Code = M4Error.Code;
-var util = require('util');
 
 module.exports = M4;
 util.inherits(M4, Transform);
