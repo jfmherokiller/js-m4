@@ -7,8 +7,7 @@ var expand = require('./lib/expand');
 var M4Error = require('./lib/m4-error');
 var Code = M4Error.Code;
 
-module.exports = M4;
-util.inherits(M4, Transform);
+
 
 function M4(opts) {
     Transform.call(this, {decodeStrings: false, encoding: 'utf8'});
@@ -241,3 +240,6 @@ M4.prototype.changeQuote = function (lhs, rhs) {
     this._expandOpts.leftQuote = lhs;
     this._expandOpts.rightQuote = rhs;
 };
+
+module.exports = M4;
+util.inherits(M4, Transform);

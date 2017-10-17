@@ -4,8 +4,6 @@ var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 var fs = require('fs');
 
-module.exports = FileBatch;
-util.inherits(FileBatch, EventEmitter);
 
 function FileBatch(files, output) {
     EventEmitter.call(this);
@@ -66,3 +64,7 @@ function BatchError(source, inner) {
     this.source = source;
     this.inner = inner;
 }
+
+
+module.exports = FileBatch;
+util.inherits(FileBatch, EventEmitter);
