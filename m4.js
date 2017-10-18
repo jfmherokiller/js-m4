@@ -169,13 +169,25 @@ M4.prototype._pushOutput = function (output) {
         return this.push(output);
     this._diversions[this._divertIx - 1] += output;
 };
-
-M4.prototype.define = function (name, fn) {
+/**
+ *
+ * @param {string} name - Identifier
+ * @param {string|Function} fnOrBody -
+ * Macro content, just like you were defining the macro in M4 or
+ * <br>
+ * function with
+ * call signature <code>"function(name , [arg1 , arg2 ...])"</code>
+ * <br>
+ * must return the macro expansion result as a string
+ *
+ * @returns {string}
+ */
+M4.prototype.define = function (name, fnOrBody) {
     if (typeof name !== 'string' || name.length === 0) return '';
-    if (typeof fn === 'undefined') fn = '';
-    if (typeof fn !== 'function')
-        fn = expand.bind(null, this._expandOpts, fn);
-    this._macros[name] = fn;
+    if (typeof fnOrBody === 'undefined') fnOrBody = '';
+    if (typeof fnOrBody !== 'function')
+        fnOrBody = expand.bind(null, this._expandOpts, fnOrBody);
+    this._macros[name] = fnOrBody;
 };
 
 M4.prototype.divert = function (ix) {
